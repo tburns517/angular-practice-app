@@ -1,0 +1,93 @@
+<h3><u>Form</u></h3>
+<form>
+  <div class="form-group">
+    <label for="firstName">First Name</label>
+    <input 
+      required minlength="3" 
+      maxlength="20"
+      pattern="[A-Za-z]{1,20}" 
+      ngModel name="firstName"
+      #firstName="ngModel" 
+      (change)="log(firstName)" 
+      id="firstName" 
+      type="text" 
+      class="form-control">
+    <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid">
+        <div *ngIf="firstName.errors.required">First name is required</div>
+        <div *ngIf="firstName.errors.minlength">First name must be at least 3 characters</div>
+        <div *ngIf="firstName.errors.pattern">First name incorrectly formatted</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="lastName">Last Name</label>
+    <input 
+      required minlength="3" 
+      maxlength="20" 
+      pattern="[A-Za-z]{1,20}" 
+      ngModel name="lastName"
+      #lastName="ngModel" 
+      (change)="log(lastName)" 
+      id="lastName" 
+      type="text" 
+      class="form-control">
+      <div class="alert alert-danger" *ngIf="lastName.touched && !lastName.valid">
+          <div *ngIf="lastName.errors.required">Last name is required</div>
+          <div *ngIf="lastName.errors.minlength">Last name must be at least 3 characters</div>
+          <div *ngIf="lastName.errors.pattern">Last name incorrectly formatted</div>
+      </div>
+  </div>
+  <div class="form-group">
+    <label for="emailAddress">Email Address</label>
+    <input 
+      required 
+      maxlength="50" 
+      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+      ngModel name="emailAddress"
+      #emailAddress="ngModel" 
+      (change)="log(emailAddress)" 
+      id="emailAddress" 
+      type="text" 
+      class="form-control">
+      <div class="alert alert-danger" *ngIf="emailAddress.touched && !emailAddress.valid">
+        <div *ngIf="emailAddress.errors.required">Email Address is required</div>
+        <div *ngIf="emailAddress.errors.pattern">Email Address incorrectly formatted</div>
+      </div>
+  </div>
+  <div class="form-group">
+    <label for="phoneNumber">Phone Number</label>
+    <input 
+      required minlength="10" 
+      maxlength="12" 
+      pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+      placeholder="888-888-8888"
+      ngModel name="phoneNumber"
+      #phoneNumber="ngModel" 
+      (change)="log(phoneNumber)" 
+      id="phoneNumber" 
+      type="text" 
+      class="form-control">
+      <div class="alert alert-danger" *ngIf="phoneNumber.touched && !phoneNumber.valid">
+        <div *ngIf="phoneNumber.errors.required">Phone Number is required</div>
+        <div *ngIf="phoneNumber.errors.pattern">Phone Number incorrectly formatted: 888-888-8888</div>
+      </div>
+  </div>
+  <div class="form-group">
+    <label for="comments">Comments</label>
+    <textarea
+      required minlength="10" 
+      maxlength="1000"
+      ng-trim="false"
+      cols="30"
+      rows="10"
+      [(ngModel)]="commentText"
+      ngModel name="comments"
+      #comments="ngModel" 
+      (change)="log(comments)" 
+      id="comments" 
+      type="text" 
+      class="form-control">
+      </textarea>
+      <span>Characters Remaining: {{maxLength-commentText.length}}</span>
+  </div>
+  <button class="btn btn-primary" (click)="clearForm()">Submit</button>
+</form>

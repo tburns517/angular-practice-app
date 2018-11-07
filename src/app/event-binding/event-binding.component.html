@@ -1,0 +1,18 @@
+<h3><u>Event Binding</u></h3>
+<p>
+  In the event-binding component class, we created a public property <code>welcome</code>
+  to use as an empty string. This string will be filled when we call the method <code>displayWelcome()</code>,
+  which will be called when the user clicks a button:<br>
+  <code>public welcome = "";</code><br><br>
+  <code>displayWelcome() &#123;<br>
+    this.welcome = "Welcome to the 'Learning Angular App'";<br>
+  &#125;<br></code><br>
+  First, we will create a button with event binding, <code>(click)</code>, then use it to call the <code>displayWelcome()</code>
+  method.<br>
+  HTML: <code>&lt;button (click)="displayWelcome()"&gt;Click to Display&lt;/button&gt;</code><br><br>
+  We will then use interpolation:<br>
+  HTML: <code>&lt;h4&gt;&#123;&#123;<code>welcome</code>&#125;&#125;&lt;/h4&gt;</code>
+</p>
+
+<button (click)="displayWelcome()">Click to Display</button>
+<h4>{{welcome}}</h4>

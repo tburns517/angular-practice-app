@@ -1,0 +1,16 @@
+<h3>Player Stats</h3>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Position</th>
+    <th>Goals</th>
+    <th>Assists</th>
+  </tr>
+  <tr *ngFor="let stat of stats$">
+    <td>{{stat.name}}</td>
+    <td>{{stat.position}}</td>
+    <td>{{stat.goals}}</td>
+    <td>{{stat.assists}}</td>
+  </tr>
+</table>

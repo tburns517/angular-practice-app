@@ -1,0 +1,29 @@
+<h3><u>Interpolation</u></h3>
+<p>The interpolation component class contains a public property <code>name</code> with a value of <code>Tyler</code>,
+along with a greetUser() method which executes the following code: <code>return "Hello " + this.name;</code></p>
+<div class="row">
+  <div class="column">
+    <h4>HTML</h4>
+    <ul>
+      <li>&#123;&#123;<code>name</code>&#125;&#125;</li>
+      <li>Welcome &#123;&#123;<code>name</code>&#125;&#125;</li>
+      <li>&#123;&#123;"Welcome " + <code>name</code>&#125;&#125;</li>
+      <li>&#123;&#123;<code>name.toUpperCase()</code>&#125;&#125;</li>
+      <li>&#123;&#123;<code>name.length</code>&#125;&#125;</li>
+      <li>&#123;&#123;<code>2+2</code>&#125;&#125;</li>
+      <li>&#123;&#123;<code>greetUser()</code>&#125;&#125;</li>
+    </ul>
+  </div>
+  <div class="column">
+    <h4>Result</h4>
+    <ul>
+      <li>{{name}}</li>
+      <li>Welcome {{name}}</li>
+      <li>{{"Welcome " + name}}</li>
+      <li>{{name.toUpperCase()}}</li>
+      <li>{{name.length}}</li>
+      <li>{{2+2}}</li>
+      <li>{{greetUser()}}</li>
+    </ul>
+  </div>
+</div>

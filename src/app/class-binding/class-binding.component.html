@@ -1,0 +1,55 @@
+<h3><u>Class Binding</u></h3>
+
+<p>The following CSS will be used:</p>
+<p>
+  <code>
+  .text-success &#123;
+      color: green;
+  &#125;<br>
+  
+  .text-failure &#123;
+      color: red;
+  &#125;<br>
+  
+  .text-special &#123;
+      font-style: italic;
+  &#125;</code>
+</p>
+
+<h4 class="text-success">This header includes class="text-success"</h4>
+<h4 class="text-failure">This header includes class="text-failure"</h4>
+<h4 class="text-special">This header includes class="text-special"</h4><br>
+
+<p>In the class-binding component, a public property named successClass has a value of "text-success"<br>
+We can bind the class using this property by doing the following:<br>
+<code>&lt;h4 &#91;class&#93;="successClass"</code>&gt;</p>
+
+<h4 [class]="successClass">This header includes [class]="successClass"</h4><br>
+
+<p>What if we have both a class attribute and class binding in the same header? :<br>
+  <code>&lt;h4 &#91;class&#93;="successClass" class="text-special"</code>&gt;</p>
+
+<h4 [class]="successClass" class="text-special">This header includes both [class]=successClass and class="text-special"</h4>
+
+<p>As you can see, class binding takes precedence over the class attribute</p><br>
+
+<p>The next example shows you can conditionally apply a class. In the class-binding component class, a boolean property, <code>failed</code>,
+  has been created and initially set to <code>true</code>
+</p>
+
+<h4 [class.text-failure]="failed">This header includes [class.text-failure]="failed"</h4><br>
+
+<p>The next example will use the <code>ngClass</code> directive. In the class-binding component class, we create an object <code>messageClasses</code>.
+  Along with this, we have a public properties, <code>failed</code> set equal to <code>true</code>, and <code>special</code> set equal to <code>true</code>.<br>
+  The messageClasses looks something like this:<br>
+  <code>public messageClasses = &#123;<br>
+    "text-success": !this.failed,<br>
+    "text-failure": this.failed,<br>
+    "text-special": this.special<br>
+  &#125;</code><br>
+  We then bind the object:<br>
+  <code>&lt;h4 &#91;class&#93;="messageClasses"</code>&gt;
+</p>
+<h4 [ngClass]="messageClasses">This header includes [ngClass]="messageClasses"</h4>
+
+<p>Since both <code>failed</code> and <code>special</code> are <code>true</code>, those styles will affect the header</p>

@@ -1,0 +1,91 @@
+<h3><u>GET and POST</u></h3>
+<h4>GET</h4>
+<p>
+  To start, we need to import the <code>HttpClientModule</code> in the app.module.ts:<br><br>
+  <code>import &#123; HttpClientModule &#125; from '@angular/common/http';</code><br>
+  .<br>
+  .<br>
+  .<br>
+  <code>imports: &#91;<br>
+  BrowserModule<br>
+  RouterModule.forRoot(routes),<br>
+  <b>HttpClientModule</b>,<br>
+  FormsModule<br>
+  &#93;<br>
+  </code>
+</p><br>
+
+<p>
+  Then, we will generate a service to access the data we are working with:<br><br>
+  <code>ng generate service <b>data-service</b></code><br><br>
+  This service can get data from anywhere - a web service, local storage, or a mock data source.<br>
+  Having data access in a service rather than component means you can change the implementation anytime,
+  without touching any components, since they don't know how the service works.<br><br>
+</p>
+
+<p>
+  In this <code>data-service</code> we will set up our GET and POST methods, but first,
+  in the <code>data-service</code> class we should use dependency injection:<br>
+  <code>constructor(<b>private http:HttpClient</b>) &#123; &#125;</code>
+</p>
+
+<p>
+  The root of our data will come from <a href="https://jsonplaceholder.typicode.com">https://jsonplaceholder.typicode.com</a>,
+  which contains mock json data. We can define this in our <code>data-service</code> class:<br>
+  <code>readonly ROOT_URL = 'https://jsonplaceholder.typicode.com';</code>
+</p>
+
+<p>
+  We can now create our GET method:<br>
+  <code>getPosts(): Observable&lt;any&gt; &#123;<br>
+    return this.http.get(this.ROOT_URL + '/posts');<br>
+  &#125;</code><br><br>
+  Notice <code>Observable&lt;any&gt;</code>: This is part of the RxJS library. Observables provide support for passing messages between publishers and subscribers in your application. 
+  Observables offer significant benefits over other techniques for event handling, asynchronous programming, and handling multiple values.<br>
+  As you can see we are concatonating the <code>ROOT_URL</code> with <code>/posts</code>, so the entire link is
+  <a href="https://jsonplaceholder.typicode.com">https://jsonplaceholder.typicode.com/posts</a>
+</p><br><br>
+
+<p>
+  Finally, we will start working in the component which will use the data. I created a <code>get-and-post</code> component for this.
+  For the component to work with this data, it will need to work with <code>data-service</code>, which we can set up using
+  dependency injection. In the <code>get-and-post</code> component class:<br>
+  <code>constructor(private data: DataService) &#123; &#125;</code><br><br>
+  In the <code>ngOnInIt</code> lifecycle hook, we will subscribe to the <code>DataService:</code><br>
+  <code>
+    ngOnInit() &#123;<br>
+      this.data.getPosts().subscribe(<br>
+        data => this.posts$ = data)<br>
+    &#125;<br>
+  </code><br>
+  <code>posts$</code> comes from an object property we declared, also in the <code>get-and-post</code> component class:<br>
+  <code>posts$: Object</code>
+</p><br>
+
+<p>
+  Now for the HTML, we use <code>ngFor</code> to loop through the data. We also make use of the json pipe for correct formatting:<br>
+  <code>  
+    &lt;div *ngFor="let post of posts$"&gt;<br>
+    &lt;pre&gt;&#123;&#123; <code>post | json</code> &#125;&#125;&lt;/pre&gt;<br>
+  &lt;/div&gt;
+</code><br><br>
+Press 'Get Posts' button to see the result of the <code>getPosts()</code> method:
+</p>
+
+<button (click)="getButton()">Get Posts</button><br><br>
+<div class="scrollbox">
+  <div *ngFor="let post of posts$">
+    <pre>{{ post | json }}</pre>
+  </div>
+</div><br><br>
+
+<h4>POST</h4>
+
+<p>
+  
+</p>
+
+<button (click)="postButton()">Create Post</button><br><br>
+<div class="scrollbox">
+  {{ newPost$ | json }}  
+</div>

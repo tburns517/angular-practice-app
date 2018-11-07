@@ -1,0 +1,51 @@
+[
+    {
+        "id": 1,
+        "name": "Tyler Burns",
+        "position": "Defense",
+        "goals": "5",
+        "assists": "3"
+    },
+    {
+        "id": 2,
+        "name": "Jordan Sames",
+        "position": "Defense",
+        "goals": "2",
+        "assists": "2"
+    },
+    {
+        "id": 3,
+        "name": "Gary Yee",
+        "position": "Right Wing",
+        "goals": "11",
+        "assists": "1"
+    },
+    {
+        "id": 4,
+        "name": "Andy Bates",
+        "position": "Center",
+        "goals": "13",
+        "assists": "2"
+    },
+    {
+        "id": 5,
+        "name": "Cody Walsh",
+        "position": "Left Wing",
+        "goals": "8",
+        "assists": "4"
+    },
+    {
+        "id": "6",
+        "name": "Corey Stram",
+        "position": "Defense",
+        "goals": "2",
+        "assists": "3"
+    },
+    {
+        "id": "8",
+        "name": "Test Name",
+        "position": "Test Position",
+        "goals": "Test Goals",
+        "assists": "Test Assists"
+    }
+]

@@ -1,0 +1,15 @@
+<h3><u>Two-Way Binding</u></h3>
+<p>
+  In order to add two-way binding we will use the <code>ngModel</code> directive. First, we have
+  added a public property <code>name</code> as an empty string in the two-way-binding component class.
+  You can view how we use this property in the HTML below:<br>
+  <code>&lt;input &#91;(ngModel)&#93;="name" type="text"&gt;</code><br><br>
+  Underneath the input field, we will use interpolation: &#123;&#123;<code>name</code>&#125;&#125;<br><br>
+  See the results:
+</p>
+
+<input [(ngModel)]="name" type="text"><br>
+{{name}}
+
+<h5>IMPORTANT!: Remember to add the FormsMoulde to app.module.ts in the 'imports' section, 
+  or ngModel will not be recognized. <br>import &#123; FormsModule &#125; from '@angular/forms'</h5>

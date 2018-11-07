@@ -1,0 +1,44 @@
+<h3><u>Style Binding</u></h3>
+<p>
+  The style-binding class contains a public boolean property, <code>hasError</code>,
+   which is set to <code>true</code>. We can use this property to determine the color
+   that will be applied to the header below.<br><br>
+   Consider this HTML for the header:<br>
+   <code>&lt;h4 &#91;style.color&#93;="hasError ? 'red' : 'green'"&gt;</code><br><br>
+   Since we know <code>hasError</code> is true, the color 'red' will be applied:
+</p>
+
+<h4 [style.color]="hasError ? 'red' : green">This header should be red</h4>
+
+<p>
+  As you can see, the color 'red' is applied. If there isn't an error, the color 'green'
+  should be applied to the header. We can try this by creating a new property, <code>otherHasError</code>,
+  and setting it to <code>false</code>, then replacing <code>hasError</code>.<br><br>
+  Consider this HTML for the header:<br>
+  <code>&lt;h4 &#91;style.color&#93;="otherHasError ? 'red' : 'green'"&gt;</code><br>
+</p>
+
+<h4 [style.color]="otherHasError ? 'red' : 'green'">This header should be green</h4>
+
+<p>
+  We can also bind the style directly using a property. Next, we will apply the color 'blue'
+  to the header by setting the public property, <code>colorBlue</code>, equal to <code>"blue"</code>.<br><br>
+  Consider this HTML for the header:<br>
+  <code>&lt;h4 &#91;style.color&#93;="colorBlue"&gt;</code><br>
+</p>
+
+<h4 [style.color]="colorBlue">This header should be blue</h4>
+
+<p>
+    Similarly to the above method of binding, we can create an object to apply multiple styles to the header 
+    using the <code>ngStyle</code> directive. In style-binding component class, the <code>headerStyles</code> 
+    object was created:<br>
+    <code>public headerStyles = &#123;<br>
+      color: "orange",<br>
+      fontStyle: "italic"<br>
+    &#125;</code><br><br>
+    Consider this HTML for the header:<br>
+    <code>&lt;h4 &#91;style.color&#93;="headerStyles"&gt;</code><br>
+  </p>
+  
+  <h4 [ngStyle]="headerStyles">This header should be orange and italicized</h4>

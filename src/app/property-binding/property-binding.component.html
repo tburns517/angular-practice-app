@@ -1,0 +1,81 @@
+<h3><u>Property Binding</u></h3>
+<section>
+    <p>The property-binding component class contains a property called <code>angularLogo</code> which includes an image link.<br>
+    A few different methods of one-way property binding are demonstrated below:</p>
+</section>
+<div class="row">
+  <div class="column">
+    <img src="{{angularLogo}}"><br>
+    HTML: <code>&lt;img src="&#123;&#123;<code>angularLogo</code>&#125;&#125;"&gt;</code>
+  </div>
+  <div class="column">
+    <img [src]="angularLogo"><br>
+    HTML: <code>&lt;img &#91;src&#93;="<code>angularLogo</code>"&gt;</code>
+  </div>
+  <div class="column">
+    <img bind-src="angularLogo"><br>
+    HTML: <code>&lt;img bind-src="<code>angularLogo</code>"&gt;</code>
+  </div>
+</div>
+<br>
+
+<section>
+  <p>As you might notice, the first example of property binding uses <a routerLink='/interpolation'>Interpolation</a>, however, this only works with strings. <br>
+    The next section will explain why.</p>
+</section>
+
+<section> 
+  Let's examine the button below: <br><br>
+  HTML: <code>&lt;button&gt;A Button&lt;/button&gt;</code><br>
+  <button>A Button</button>
+</section>
+
+<section> 
+  Adding the <code>disabled</code> attribute disables the button<br>
+  HTML: <code>&lt;button <b>disabled</b>&gt;A Button&lt;/button&gt;</code><br>
+  <button disabled>A Button</button>
+</section>
+
+<section>
+  Setting the <code>disabled</code> attribute to <code>false</code> does nothing<br>
+  HTML: <code>&lt;button <b>disabled="false"</b>&gt;A Button&lt;/button&gt;</code><br>
+  <button disabled="false">A Button</button>
+</section>
+
+<section>
+  Using interpolation to set the <code>disabled</code> attribute to <code>false</code>, also does nothing<br>
+  HTML: <code>&lt;button disabled="</code>&#123;&#123;<code>false</code>&#125;&#125;<code>"&gt;A Button&lt;/button&gt;</code><br>
+  <button disabled="{{false}}">A Button</button>
+</section>
+
+<section>
+  Using another method of property binding, setting the <code>disabled</code> attribute to <code>false</code> now works<br>
+  HTML: <code>&lt;button <b>[disabled]="false"</b>&gt;A Button&lt;/button&gt;</code><br>
+  <button [disabled]="false">A Button</button>
+</section>
+  
+
+
+
+<h4><ul>Important Information: HTML Attirbutes vs DOM Properties</ul></h4>
+
+  <section>
+  <p>The input field below uses the following HTML code: <code>&lt;input type="text" value="Tyler"&gt;</code></p>
+  <input type="text" value="Tyler">
+  <p>
+  After inspecting the input field above:<br>
+  - Typing <code>$0.getAttribute('value')</code> in the browser console returns <code>"Tyler"</code>.<br>
+  - Typing <code>$0.value</code> in the browser console returns <code>"Tyler"</code>.
+  </p>
+</section>
+<section>
+    <p>The input field below uses the same HTML code as above: <code>&lt;input type="text" value="Tyler"&gt;</code></p>
+    <input type="text" value="Tyler">
+    <p>
+    <b>Replace "Tyler" with the text "Hello"</b><br>
+    After inspecting the input field above:<br>
+    - Typing <code>$0.getAttribute('value')</code> in the browser console returns <code>"Tyler"</code>.<br>
+    - Typing <code>$0.value</code> in the browser console returns <code>"Hello"</code>.<br><br><br>
+    <b>Attributes initialize DOM properties and then they are done. Property values can change; attribute values can't. When the browser renders the above button, it creates a corresponding DOM node with a value property initialized to "Tyler". When the user enters "Hello" into the input box, the DOM element value property becomes "Hello". But the HTML value attribute remains unchanged as you discover if you ask the input element about that attribute: input.getAttribute('value') returns "Tyler". The HTML attribute value specifies the initial value; the DOM value property is the current value.</b>
+    </p>
+  </section>
